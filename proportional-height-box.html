@@ -1,14 +1,4 @@
 <link rel="import" href="../polymer/polymer.html" />
-<!--
-`proportional-height-box`
-A block-level element that resizes proportionally.
-
-Based on code from fitvids.js (http://fitvidsjs.com/)
-
-The `width` and `height` parameters specify a proportional ratio, **not the exact size**.
-
-@demo demo/index.html
--->
 
 <dom-module id="proportional-height-box">
   <template>
@@ -23,7 +13,7 @@ The `width` and `height` parameters specify a proportional ratio, **not the exac
         display: block;
         height: 0;
       }
-      #proportional > ::content > * {
+      #proportional > ::slotted(*) {
         position: absolute;
         display: block;
         width: 100%;
@@ -33,26 +23,32 @@ The `width` and `height` parameters specify a proportional ratio, **not the exac
     </style>
 
     <div id="proportional" style$="[[_heightStyle]]">
-      <content></content>
+      <slot></slot>
     </div>
 
   </template>
 
   <script>
-    (function() {
-      'use strict';
+    /**
+      * proportional-height-box
+      * 
+      * A block-level element that resizes proportionally, based on code from fitvids.js (http://fitvidsjs.com/)
+      *
+      * The `width` and `height` parameters specify a proportional ratio, **not the exact size**.
+      *
+      * @demo demo/index.html
+      */
+    class ProportionalHeightBox extends Polymer.Element {
+      static get is() { return 'proportional-height-box'; }
 
-      Polymer({
-
-        is: 'proportional-height-box',
-
-        properties: {
-          /* The width proportion */
+      static get properties() {
+        return {
+          /* The width proportion of the desired aspect ratio */
           width: {
             type: Number,
             value: 4
           },
-          /* The height proportion */
+          /* The height proportion of the desired aspect ratio */
           height: {
             type: Number,
             value: 3
@@ -62,16 +58,20 @@ The `width` and `height` parameters specify a proportional ratio, **not the exac
             type: String,
             computed: '_computeStyle(width, height)'
           }
-        },
+        };
+      }
 
-        /* Computes the CSS styling for _heightStyle */
-        _computeStyle: function(width, height) {
-          var ratio = (height / width) * 100;
-          return `padding-top: ${ratio}%`;
-        }
+      /**
+        * Computes the CSS styling for _heightStyle
+        * @param {Number} width The width portion of the aspect ratio
+        * @param {Number} height The height portion of the aspect ratio
+        */
+      _computeStyle(width, height) {
+        var ratio = (height / width) * 100;
+        return `padding-top: ${ratio}%`;
+      }
+    }
 
-      });
-
-    }());
+    customElements.define(ProportionalHeightBox.is, ProportionalHeightBox);
   </script>
 </dom-module>
