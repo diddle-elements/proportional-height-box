@@ -9,7 +9,9 @@
     "web-component",
     "proportional",
     "fitvids",
-    "ratio"
+    "ratio",
+    "aspect",
+    "aspect ratio"
   ],
   "main": "proportional-height-box.html",
   "license": "http://polymer.github.io/LICENSE.txt",

@@ -30,6 +30,12 @@ Install into your project with bower:
 </proportional-height-box>
 ```
 
+Width and Height can be any arbitrary values which are used to
+create the aspect ratio calculation. You can, for example, use
+the original dimensions of the image or video in pixels or the
+aspect ratio values such as `16:9` where width is set to `16` and
+height is set to `9`.
+
 ## Contributing
 
 1. Fork it!
