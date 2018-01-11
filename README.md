@@ -1,6 +1,7 @@
 # proportional-height-box
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square)](https://beta.webcomponents.org/element/diddledan/proportional-height-box)
+![Vaadin Directory availability](https://img.shields.io/badge/Vaadin%20Directory-available-green.svg?style=flat-square&colorB=00b4f0&link=https://vaadin.com/directory)
 
 An element to resize child element to proportional height based on the width similar to fitvids.
 
