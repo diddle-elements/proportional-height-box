@@ -10,22 +10,42 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../proportional-height-box.html">
+    <script type="module" src="../proportional-height-box.js"></script>
 
-    <style is="custom-style" include="demo-pages-shared-styles">
-    </style>
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+    </style>`;
+
+document.head.appendChild($_documentContainer.content);
+</script>
   </head>
   <body>
-    <div class="vertical-section-container centered">
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <h3>Basic proportional-height-box demo</h3>
       <p>Try resizing your browser</p>
       <demo-snippet>
         <template>
           <proportional-height-box width="300" height="200">
-              <img src="http://lorempixel.com/g/300/200/cats/" />
+              <img src="http://lorempixel.com/g/300/200/cats/">
           </proportional-height-box>
         </template>
       </demo-snippet>
-    </div>
+    </div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
   </body>
 </html>
