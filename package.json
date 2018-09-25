@@ -11,7 +11,7 @@
   "homepage": "https://github.com/diddledan/proportional-height-box",
   "repository": "https://github.com/diddledan/proportional-height-box.git",
   "name": "@diddledan/proportional-height-box",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
