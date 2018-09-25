@@ -1,15 +1,17 @@
+import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
+
 /**
-  * proportional-height-box
-  * 
-  * A block-level element that resizes proportionally, based on code from fitvids.js (http://fitvidsjs.com/)
-  *
-  * The `width` and `height` parameters specify a proportional ratio, **not the exact size**.
-  *
-  * @demo demo/index.html
-  */
-class ProportionalHeightBox extends Polymer.Element {
+ * proportional-height-box
+ * 
+ * A block-level element that resizes proportionally, based on code from fitvids.js (http://fitvidsjs.com/)
+ *
+ * The `width` and `height` parameters specify a proportional ratio, **not the exact size**.
+ *
+ * @demo demo/index.html
+ */
+class ProportionalHeightBox extends PolymerElement {
   static get template() {
-    return Polymer.html`
+    return html`
     <style>
       :host {
         display: block;
