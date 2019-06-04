@@ -6,10 +6,8 @@
 
     <title>proportional-height-box test</title>
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
-
-    <script type="module" src="../proportional-height-box.js"></script>
   </head>
   <body>
     <test-fixture id="basic">
@@ -23,7 +21,7 @@ import '../proportional-height-box.js';
 suite('proportional-height-box', function() {
   test('instantiating the element works', function() {
     var element = fixture('basic');
-    assert.equal(element.is, 'proportional-height-box');
+    assert.notEqual(element.shadowRoot, null);
   });
 });
 </script>

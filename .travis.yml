@@ -1,25 +1,33 @@
 language: node_js
 sudo: false
 before_script:
-  - npm install -g polylint web-component-tester
-  - polylint
+- npm install -g polylint web-component-tester typescript
+- polylint
+- tsc
 env:
   global:
-    - secure: gZ5vpMlc9fuKSZeMmT6xf4+FIVWxET6f6Lkp6l5Qo9vL2X/KC/bMJF1v2w5xXFLFTdm/hPUDkeQRDUBBJhGcsXhJeWIvAXdPkObV9ZPRwpDnnN1qU5lOqVIy6gFjDm2Wm6UNXcRnyP1TrGpMwbG13EUtD0rF8LZqBm3B833sKS4=
-    - secure: DObDewETPYiIsASeC3UETPbQ6YBniRZdNV2eTM1xULvuFNDxXJD09KKyWOiMduublEIJRXLjBIXmD8cbVsgrbRUYA4bxcXffDeuc6q6HaQGU9HvIbLz6o3/oxi4fX2G9GwrZtijW2p2Rgw2l9koR3ovjcM97CSTWFUMh5rtXag8=
-    - CXX=g++-4.8
+  - secure: gZ5vpMlc9fuKSZeMmT6xf4+FIVWxET6f6Lkp6l5Qo9vL2X/KC/bMJF1v2w5xXFLFTdm/hPUDkeQRDUBBJhGcsXhJeWIvAXdPkObV9ZPRwpDnnN1qU5lOqVIy6gFjDm2Wm6UNXcRnyP1TrGpMwbG13EUtD0rF8LZqBm3B833sKS4=
+  - secure: DObDewETPYiIsASeC3UETPbQ6YBniRZdNV2eTM1xULvuFNDxXJD09KKyWOiMduublEIJRXLjBIXmD8cbVsgrbRUYA4bxcXffDeuc6q6HaQGU9HvIbLz6o3/oxi4fX2G9GwrZtijW2p2Rgw2l9koR3ovjcM97CSTWFUMh5rtXag8=
+  - CXX=g++-4.8
 node_js: stable
 addons:
   firefox: latest
   apt:
     sources:
-      - google-chrome
-      - ubuntu-toolchain-r-test
+    - google-chrome
+    - ubuntu-toolchain-r-test
     packages:
-      - google-chrome-stable
-      - g++-4.8
+    - google-chrome-stable
+    - g++-4.8
   sauce_connect: true
 script:
-  - xvfb-run wct --module-resolution=node --npm
-  - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then wct --module-resolution=node --npm -s ''default''; fi'
-
+- xvfb-run wct --module-resolution=node --npm
+- 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then wct --module-resolution=node --npm -s ''default''; fi'
+deploy:
+  provider: npm
+  on:
+    tags: true
+  api_key:
+    secure: S4w9wWw1DWYSDSxQQ0gF9xVu1fnXPM/KG9K4rVBATU1H3zHXDG9s00RS6UYk8TJcSB0u6kdeq6efuJhG2kL9avMHk6wlmi4PqycgICedKrttEsKBzzSUgb3TKeqBBbpBnEOg4RTTz7ALcZSzRsgHHshZ+6ruoOznNSMgmf8ZoFHh5agn6s0K105gr3CCbR7ZpAFpggmue8i/p2SHDNd+tXEpVAkDwvRlroLRWGgK+UYG2DMlFnX1ulK7MJOBxm6/MtPyO3xgTVSmBYE6QuNVgMBjP3k3J75ZycLjEXZZARAVH3Lz2jnLqxYsg88R/giLifLmAh7+sb7xwNZ1zkH/LdbnjtIo7w3hooJD6deYbneo1NTfYUV9MBjGZfGbRsZT1qRkiPydtLGnH3znpD8GfLjp8y0VtcyNAoS0HN491XdFiKssvUogirBw0oBtyIqJ+8kQKUL8QNouuUfp95dee2GfhsOIrrCQZTb9ch9kmE44973wTDoReens4swEptQSD9ABJZGOVg87VvNDE8pbrRpdnh30tZlUeQ5gszxrEtpTQQbq4X3ezkpVzGc5CTT2AN48pjeC7XMO43YzuzIbS78Jq3wTY8DRJSN379/23aBtLMmzW1zQrKTgFG5MaPJosO9+5ZMPHWzb7frL8jXDnU18o3oRNk9eUsLj6oQYdDo=
+  email:
+    secure: I+5OgVFKU3A22ympg0uA+b9Yk1SCC1sGCfeldj1ePzxm3inG7UFoCNYuoZuhOQl0v5RkTDEVZefiNZNUclaX1EoJn+/GIuDG4LArzdPw+lyP9hxtGf9SqN2/EfYfA9o7pngWiEbdn1gasytEs8w4yKARyem5f9HgAyXsoM+67wHnr+fKUv0SAbFGz+bRxL9F9Z5uUnVbWN4MT5Ur6NdzfB7o0B7WVbPoYMM8YNnpH16B+JT9ywnwhItYjLcuWXvS6ODP5JzxlA0SxUWliuBerPXR9yypVWIlT9zDynfLGpx+gbiVFpsg3WeK66eqsrhqHqrL7Ogmb0Xpg0ChWcRjbXrGqlJyEUySk5SQ+TC419nM+oImUQs2aWJ/Xo54JS4LOvpmLvJyTXk1EvdT9iojTvehnyb6oqZgN5r75Akfi0+/FW9E9pFjeY3cU3DBWzCxzD+9men/oYiQD+KkL4Bi+HsvKxqNUnDZZsJwS1Bmej2hdMuqcd1iF5Pp1AoHMVb4FbFQ2KUM16MMANWl2aANIe3UVxM6b1WDzcRVgM0qM3CqEZjN6Ucyg+AsVUeee2r14ROAk4BhBszBy1mM19FFGbW2E4MB5bFevDJGMJGzEZtBVYpM/7UgQ6cck098mu7/udO7M0sNYwkzHvITkVp/setIceSmsp9DKRZYCtUhk5w=

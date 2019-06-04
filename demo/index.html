@@ -6,11 +6,13 @@
 
     <title>proportional-height-box demo</title>
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <script type="module" src="../proportional-height-box.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/paper-checkbox/paper-checkbox.js';
+      import '../proportional-height-box.js';
+    </script>
 
     <!-- FIXME(polymer-modulizer):
         These imperative modules that innerHTML your HTML are
@@ -39,7 +41,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
       <demo-snippet>
         <template>
           <proportional-height-box width="300" height="200">
-              <img src="http://lorempixel.com/g/300/200/cats/">
+            <img src="http://lorempixel.com/g/300/200/cats/">
           </proportional-height-box>
         </template>
       </demo-snippet>

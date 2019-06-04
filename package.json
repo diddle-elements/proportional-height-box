@@ -22,12 +22,16 @@
   "author": "Daniel Llewellyn <daniel@bowlhat.net>",
   "license": "MIT",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/polymer": "^3.2.0",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "lit-element": "^2.1.0"
   },
   "devDependencies": {
-    "@polymer/iron-component-page": "^3.0.0-pre.18",
-    "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
-    "wct-browser-legacy": "^1.0.1",
-    "@webcomponents/webcomponentsjs": "^2.0.0"
+    "@polymer/iron-component-page": "^4.0.1",
+    "@polymer/iron-demo-helpers": "^3.1.0",
+    "@polymer/paper-checkbox": "^3.1.0",
+    "chai": "^4.0.0",
+    "sinon": "^4.0.0",
+    "web-component-tester": "^6.9.2"
   }
 }
