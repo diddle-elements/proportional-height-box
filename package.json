@@ -22,8 +22,8 @@
   "author": "Daniel Llewellyn <daniel@bowlhat.net>",
   "license": "MIT",
   "dependencies": {
-    "@polymer/polymer": "^3.3.1",
-    "@webcomponents/webcomponentsjs": "^2.4.3",
+    "@polymer/polymer": "^3.4.1",
+    "@webcomponents/webcomponentsjs": "^2.5.0",
     "lit-element": "^2.4.0"
   },
   "devDependencies": {
